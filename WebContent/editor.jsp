@@ -16,7 +16,7 @@ JSONParser parser = new JSONParser();
 String idgot = request.getParameter("userID");
 String pwgot = request.getParameter("userPW");
 
-File checkingfile = new File(path+"\\"+idgot+".json");
+File checkingfile = new File(path+"/"+idgot+".json");
 if(!checkingfile.exists())
 {
 	response.setCharacterEncoding("UTF-8");
@@ -30,7 +30,7 @@ if(!checkingfile.exists())
 	return;
 }
 
-Reader reader= new FileReader(path+"\\"+idgot+".json");
+Reader reader= new FileReader(path+"/"+idgot+".json");
 JSONObject object;
 object = (JSONObject) parser.parse(reader);
 String nickname = (String) object.get("nickname");

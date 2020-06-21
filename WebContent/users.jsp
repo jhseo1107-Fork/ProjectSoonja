@@ -10,7 +10,7 @@
 String path = Pathstring.path;
 JSONParser parser = new JSONParser();
 String id = request.getParameter("userID");
-Reader reader= new FileReader(path+"\\"+id+".json");
+Reader reader= new FileReader(path+"/"+id+".json");
 JSONObject object;
 object = (JSONObject) parser.parse(reader);
 String nickname = (String) object.get("nickname");

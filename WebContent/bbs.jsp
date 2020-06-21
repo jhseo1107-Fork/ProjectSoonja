@@ -12,7 +12,7 @@
 <%
 String path = Pathstring.path;
 JSONParser parser = new JSONParser();
-Reader reader= new FileReader(path+"\\userlist.json");
+Reader reader= new FileReader(path+"/userlist.json");
 JSONObject object = new JSONObject();
 object = (JSONObject) parser.parse(reader);
 JSONArray userarray = (JSONArray) object.get("users");
@@ -23,7 +23,7 @@ String outputstring1= "";
 while(iterator.hasNext())
 {
 	String tmp = iterator.next();	
-	Reader reader2 = new FileReader(path+"\\"+tmp+".json");
+	Reader reader2 = new FileReader(path+"/"+tmp+".json");
 	JSONObject object2 = new JSONObject();
 	object2= (JSONObject) parser.parse(reader2);
 	String name = (String) object2.get("nickname");

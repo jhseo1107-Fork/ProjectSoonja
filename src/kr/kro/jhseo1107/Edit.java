@@ -47,7 +47,7 @@ public class Edit extends HttpServlet {
 				String id = request.getParameter("userID");
 				String nickname = request.getParameter("userName");
 				String text = request.getParameter("userText");
-				if(text.isBlank() || nickname.isBlank())
+				if(text.isEmpty() || nickname.isEmpty())
 				{
 					alertredirect("공백이 있으면 안됩니다.", "editor.jsp", request, response);
 					return;
@@ -58,7 +58,7 @@ public class Edit extends HttpServlet {
 				userfile.put("id", id);
 				userfile.put("nickname", nickname);
 				userfile.put("text", text);
-				FileWriter file2 = new FileWriter(path+"\\"+id+".json");
+				FileWriter file2 = new FileWriter(path+"/"+id+".json");
 				file2.write(userfile.toJSONString());
 				file2.close();
 

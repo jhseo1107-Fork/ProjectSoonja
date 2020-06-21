@@ -55,7 +55,7 @@ public class Register extends HttpServlet {
 				String id = request.getParameter("userID");
 				String pw = request.getParameter("userPW");
 				String nickname = request.getParameter("userName");
-				if(id.contains(" ") || pw.contains(" ") || nickname.isBlank() || pw.isBlank() || id.isBlank())
+				if(id.contains(" ") || pw.contains(" ") || nickname.isEmpty() || pw.isEmpty() || id.isEmpty())
 				{
 					alertredirect("공백이 있으면 안됩니다.", "register.jsp", request, response);
 					return;
@@ -65,7 +65,7 @@ public class Register extends HttpServlet {
 				
 				String path = Pathstring.path;
 				JSONParser parser = new JSONParser();
-				Reader reader= new FileReader(path+"\\userlist.json");
+				Reader reader= new FileReader(path+"/userlist.json");
 				JSONObject object;
 				object = (JSONObject) parser.parse(reader);
 				JSONArray names = (JSONArray) object.get("users");
@@ -78,7 +78,7 @@ public class Register extends HttpServlet {
 						alertredirect("이미 사용중인 ID입니다.", "register.jsp", request, response);
 					}
 				}*/
-				File checkingfile = new File(path+"\\"+id+".json");
+				File checkingfile = new File(path+"/"+id+".json");
 				if(checkingfile.exists())
 				{
 					alertredirect("이미 사용중인 ID입니다.", "register.jsp", request, response);
@@ -93,7 +93,7 @@ public class Register extends HttpServlet {
 				}
 				editednames.add(id);
 				editedobject.put("users", editednames);
-				FileWriter file = new FileWriter(path+"\\userlist.json");
+				FileWriter file = new FileWriter(path+"/userlist.json");
 				file.write(editedobject.toJSONString());
 				file.close();
 				
@@ -104,7 +104,7 @@ public class Register extends HttpServlet {
 				userfile.put("pw", hashedpw);
 				userfile.put("nickname", nickname);
 				userfile.put("text", "Sample text. Login to edit.");
-				FileWriter file2 = new FileWriter(path+"\\"+id+".json");
+				FileWriter file2 = new FileWriter(path+"/"+id+".json");
 				file2.write(userfile.toJSONString());
 				file2.close();
 
